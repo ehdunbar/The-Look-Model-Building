@@ -56,15 +56,16 @@ view: inventory_items {
     sql: ${TABLE}.cost ;;
   }
 
-
-
   dimension: product_id {
     type: number
     # hidden: yes
     sql: ${TABLE}.product_id ;;
   }
 
-
+#   measure: profit {
+#     type: sum
+#     sql:  ${cost} - ${order_items.total_sales} ;;
+#   }
 
   measure: count {
     type: count

@@ -16,6 +16,13 @@ explore: inventory_items {
     relationship: many_to_one
     fields: [brand, category, id, item_name, retail_price]
   }
+
+  join: order_items {
+    view_label: "Order Items"
+    type: left_outer
+    sql_on: ${inventory_items.id} = ${order_items.inventory_item_id} ;;
+    relationship: one_to_many
+  }
 }
 
 explore: users {
