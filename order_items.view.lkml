@@ -38,6 +38,29 @@ view: order_items {
     sql: ${TABLE}.sale_price ;;
   }
 
+  measure: total_sales {
+    type: sum
+    sql: ${sale_price} ;;
+  }
+
+  measure: max_sale {
+    label: "Most Expensive Sale"
+    type: max
+    sql: ${sale_price} ;;
+  }
+
+  measure: min_sale {
+    label: "Least Expensive Sale"
+    type: min
+    sql: ${sale_price} ;;
+  }
+
+  measure: average_sale {
+    label: "Average Sale Price"
+    type: average
+    sql: ${sale_price} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, inventory_items.id, orders.id]
