@@ -1,0 +1,69 @@
+connection: "thelook"
+
+include: "*.view.lkml"         # include all views in this project
+include: "*.dashboard.lookml"  # include all dashboards in this project
+
+datagroup: 4_hour_persist {
+  max_cache_age: "4 hours"
+}
+
+explore: inventory_items {
+  persist_with: 4_hour_persist
+  join: products {
+    view_label: "Products"
+    type: left_outer
+    sql_on: ${inventory_items.product_id} = ${products.id} ;;
+    relationship: many_to_one
+    fields: [brand, category, id, item_name, retail_price]
+  }
+}
+
+explore: users {
+  always_filter: {
+    filters: {
+      field: country
+      value: "USA"
+    }
+  }
+
+  sql_always_where: ${created_date} >= '2015-01-01' ;;
+
+  join: orders {
+    view_label: "Orders"
+    type: left_outer
+    sql_on: ${users.id} = ${orders.user_id} ;;
+    relationship: one_to_many
+  }
+
+  join: user_data {
+    view_label: "User Data"
+    type: left_outer
+    sql_on: ${users.id} = ${user_data.user_id} ;;
+    relationship: one_to_one
+  }
+}
+
+explore: order_items {
+
+  join: orders {
+    type: left_outer
+    sql_on: ${order_items.order_id} = ${orders.id} ;;
+    relationship: many_to_one
+  }
+}
+
+
+# # Select the views that should be a part of this model,
+# # and define the joins that connect them together.
+#
+# explore: order_items {
+#   join: orders {
+#     relationship: many_to_one
+#     sql_on: ${orders.id} = ${order_items.order_id} ;;
+#   }
+#
+#   join: users {
+#     relationship: many_to_one
+#     sql_on: ${users.id} = ${orders.user_id} ;;
+#   }
+# }
