@@ -46,7 +46,7 @@ view: order_items {
   }
 
   measure: max_sale {
-    label: "Most Expensive Sale"
+    label: "Most Expensive Sale Item Merge Conflict time"
     type: max
     sql: ${sale_price} ;;
     drill_fields: [sale_price]
