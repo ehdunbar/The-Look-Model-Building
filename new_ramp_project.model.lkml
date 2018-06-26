@@ -8,7 +8,6 @@ datagroup: 6_hour_persist {
 }
 
 explore: inventory_items {
-  persist_with: 6_hour_persist
   join: products {
     view_label: "Products"
     type: left_outer
