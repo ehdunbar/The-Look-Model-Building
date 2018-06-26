@@ -23,18 +23,18 @@ view: orders {
 
   dimension: status {
     type: string
-    sql: ${TABLE}.status ;;
-#     case: {
-#       when: {
-#         sql: ${TABLE}.status = "complete" ;;
-#         label: "Order Completed"
-#       }
-#       when: {
-#         sql: sql: ${TABLE}.status = "cancelled" ;;
-#         label: "Order Cancelled"
-#       }
-#       else: "Unknown"
-#     }
+  #  sql: ${TABLE}.status ;;
+    case: {
+      when: {
+        sql: ${TABLE}.status = 'complete' ;;
+        label: "Order Completed"
+      }
+      when: {
+        sql: ${TABLE}.status = 'cancelled' ;;
+        label: "Order Cancelled"
+      }
+      else: "Unknown"
+    }
   }
 
   dimension: user_id {

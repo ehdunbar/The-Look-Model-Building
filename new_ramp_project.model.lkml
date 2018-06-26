@@ -3,12 +3,12 @@ connection: "thelook"
 include: "*.view.lkml"         # include all views in this project
 include: "*.dashboard.lookml"  # include all dashboards in this project
 
-datagroup: 4_hour_persist {
+datagroup: 5_hour_persist {
   max_cache_age: "4 hours"
 }
 
 explore: inventory_items {
-  persist_with: 4_hour_persist
+  persist_with: 5_hour_persist
   join: products {
     view_label: "Products"
     type: left_outer
@@ -24,6 +24,12 @@ explore: inventory_items {
     relationship: one_to_many
   }
 }
+
+## Explore aliassing
+# explore: order_items_2 {
+#   view_name: order_items
+#
+# }
 
 explore: users {
   always_filter: {

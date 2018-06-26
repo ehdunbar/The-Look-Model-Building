@@ -62,10 +62,27 @@ view: inventory_items {
     sql: ${TABLE}.product_id ;;
   }
 
-#   measure: profit {
-#     type: sum
-#     sql:  ${cost} - ${order_items.total_sales} ;;
-#   }
+  measure: profit {
+    type: sum
+    sql:  ${order_items.sale_price} - ${TABLE}.cost ;;
+    value_format: "$0.00 "
+  }
+
+  measure: sock_profit {
+    type: sum
+    sql:  ${order_items.sale_price} - ${TABLE}.cost ;;
+    filters: {
+      field: products.category
+      value: "Socks"
+    }
+    value_format: "$0.00 "
+  }
+
+  measure: sock_profit_pecent {
+    type: number
+    sql: ${sock_profit} / ${profit} ;;
+    value_format_name: percent_2
+  }
 
   measure: count {
     type: count

@@ -41,6 +41,7 @@ view: order_items {
   measure: total_sales {
     type: sum
     sql: ${sale_price} ;;
+    value_format: "$0.00 "
   }
 
   measure: max_sale {
@@ -48,6 +49,7 @@ view: order_items {
     type: max
     sql: ${sale_price} ;;
     drill_fields: [sale_price]
+    value_format: "$0.00 "
   }
 
   measure: min_sale {
@@ -55,6 +57,7 @@ view: order_items {
     type: min
     sql: ${sale_price} ;;
     drill_fields: [sale_price]
+    value_format: "$0.00 "
   }
 
   measure: average_sale {
@@ -62,6 +65,7 @@ view: order_items {
     type: average
     sql: ${sale_price} ;;
     drill_fields: [sale_price, max_sale, min_sale]
+    value_format: "$0.00 "
   }
 
   measure: count {
