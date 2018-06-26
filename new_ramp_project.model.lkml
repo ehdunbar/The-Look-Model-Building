@@ -32,12 +32,6 @@ explore: inventory_items {
 # }
 
 explore: users {
-  always_filter: {
-    filters: {
-      field: country
-      value: "USA"
-    }
-  }
 
   sql_always_where: ${created_date} >= '2015-01-01' ;;
 
