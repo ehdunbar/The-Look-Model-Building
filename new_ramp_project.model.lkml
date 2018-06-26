@@ -8,7 +8,6 @@ datagroup: 6_hour_persist {
 }
 
 explore: inventory_items {
-  persist_with: 6_hour_persist
   join: products {
     view_label: "Products"
     type: left_outer
@@ -32,12 +31,6 @@ explore: inventory_items {
 # }
 
 explore: users {
-  always_filter: {
-    filters: {
-      field: country
-      value: "USA"
-    }
-  }
 
   sql_always_where: ${created_date} >= '2015-01-01' ;;
 
