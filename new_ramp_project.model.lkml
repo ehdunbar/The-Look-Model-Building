@@ -9,7 +9,7 @@ datagroup: 6_hour_persist {
 
 explore: inventory_items {
   join: products {
-    view_label: "Products"
+    view_label: "Products merge error"
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
