@@ -9,7 +9,11 @@ datagroup: 6_hour_persist {
 
 explore: inventory_items {
   join: products {
+<<<<<<< HEAD
     view_label: "Products create that merge error dev branch"
+=======
+    view_label: "Products merge error"
+>>>>>>> branch 'master' of git@github.com:ehdunbar/The-Look-Model-Building.git
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
